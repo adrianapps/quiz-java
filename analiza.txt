@@ -1,0 +1,28 @@
+8.Zaznacz wyraźnie (poprzez opis), po której czynności pojawiły się dane
+wywołania metod cyklu życia w logach:
+• Po pierwszym uruchomieniu aplikacji - OnCreated, onStart, onResume
+• Po wciśnięciu przycisku Cofnij - onPause, onStop, onDestroy
+• Po ponownym uruchomieniu aplikacji - OnCreated, onStart, onResume
+• Po wciśnięciu przycisku ekranu głównego Home - onPause, onStop
+• Po powrocie do aplikacji z listy ostatnio używanych aplikacj - onStart, onResume
+
+
+Po zmianie orientacji urządzenia urządzenia:
+2024-12-08 18:59:56.325  2768-2768  ViewRootIm...nActivity] com.example.quizjava                 D  hardware acceleration = true , fakeHwAccelerated = false, sRendererDisabled = false, forceHwAccelerated = false, sSystemRendererDisabled = false
+2024-12-08 19:00:03.276  2768-2768  MainActivity            com.example.quizjava                 D  Metoda onPause została wywołana
+2024-12-08 19:00:03.278  2768-2768  MainActivity            com.example.quizjava                 D  Metoda onStop została wywołana
+2024-12-08 19:00:03.280  2768-2768  MainActivity            com.example.quizjava                 D  Metoda onDestroy została wywołana
+2024-12-08 19:00:03.343  2768-2768  MainActivity            com.example.quizjava                 D  Metoda onCreate została wywołana
+2024-12-08 19:00:03.394  2768-2768  MainActivity            com.example.quizjava                 D  Metoda onStart została wywołana
+2024-12-08 19:00:03.396  2768-2768  MainActivity            com.example.quizjava                 D  Metoda onResume została wywołana
+
+
+10. Wyświetla się pierwsze "pytanie", w moim przypadku był to po prostu napis TextView
+
+
+13. Zrestartuj aplikację i powtórz kroki z punktu 9 – które pytanie wyświetli się tym razem? Dodaj
+odpowiedź do pliku tekstowego z logami cyklu życia aplikacji:
+Wyświetli się pytanie, na którym obróciłem ekran, czyli stan został poprawnie przekazany.
+
+
+
