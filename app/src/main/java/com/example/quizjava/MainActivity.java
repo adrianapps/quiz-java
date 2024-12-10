@@ -24,7 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private static final String KEY_CURRENT_INDEX = "currentIndex";
     public static final String KEY_EXTRA_ANSWER = "correctAnswer";
     private static final int REQUEST_CODE_PROMPT = 0;
+    private static final String MAIN_ACTIVITY = "MainActivity";
     private int currentIndex = 0;
+    private int counter = 0;
     private Button trueButton;
     private Button falseButton;
     private Button nextButton;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.d("MainActivity", "Metoda onCreate została wywołana");
+        Log.d(MAIN_ACTIVITY, "Metoda onCreate została wywołana");
         setContentView(R.layout.activity_main);
 
         if (savedInstanceState != null) {
@@ -69,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
                 currentIndex = (currentIndex + 1) % questions.length;
                 answerWasShown = false;
                 setNextQuestion();
+
+                if (currentIndex == 0)
+                    showFinalScore();
             }
         });
 
@@ -97,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if (userAnswer == correctAnswer) {
                 resultMessageId = R.string.correct_answer;
+                counter++;
             } else {
                 resultMessageId = R.string.incorrect_answer;
             }
@@ -104,40 +110,46 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this, resultMessageId, Toast.LENGTH_SHORT).show();
     }
 
+    private void showFinalScore() {
+        String resultMessage = "Twój wynik: " + counter + "/" + questions.length;
+        Toast.makeText(this, resultMessage, Toast.LENGTH_LONG).show();
+        counter = 0;
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("MainActivity", "Metoda onDestroy została wywołana");
+        Log.d(MAIN_ACTIVITY, "Metoda onDestroy została wywołana");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("MainActivity", "Metoda onPause została wywołana");
+        Log.d(MAIN_ACTIVITY, "Metoda onPause została wywołana");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.d("MainActivity", "Metoda onStop została wywołana");
+        Log.d(MAIN_ACTIVITY, "Metoda onStop została wywołana");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("MainActivity", "Metoda onResume została wywołana");
+        Log.d(MAIN_ACTIVITY, "Metoda onResume została wywołana");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("MainActivity", "Metoda onStart została wywołana");
+        Log.d(MAIN_ACTIVITY, "Metoda onStart została wywołana");
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.d("MainActivity", "Wywołana została metoda: onSaveInstanceState");
+        Log.d(MAIN_ACTIVITY, "Wywołana została metoda: onSaveInstanceState");
         outState.putInt(KEY_CURRENT_INDEX, currentIndex);
     }
 
